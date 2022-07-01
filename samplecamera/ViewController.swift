@@ -16,6 +16,7 @@ let fixedCamHeight: Int32 = 720
 
 class ViewController: NSViewController {
 
+    private var needToStream: Bool = false
     private var mirrorCamera: Bool = false
     private var image = NSImage(named: "cham-index")
     private var activating: Bool = false
@@ -29,6 +30,7 @@ class ViewController: NSViewController {
     private var overlayMessage: Bool = false
     private var sequenceNumber = 0
     private var timer: Timer?
+    private var propTimer: Timer?
 
     func activateCamera() {
         guard let extensionIdentifier = ViewController._extensionBundle().bundleIdentifier else {
@@ -70,6 +72,39 @@ class ViewController: NSViewController {
         return extensionBundle
     }
     
+    func getJustProperty(streamId: CMIOStreamID) -> String? {
+        let selector = FourCharCode("just")
+        var address = CMIOObjectPropertyAddress(selector, .global, .main)
+        let exists = CMIOObjectHasProperty(streamId, &address)
+        if exists {
+            var dataSize: UInt32 = 0
+            var dataUsed: UInt32 = 0
+            CMIOObjectGetPropertyDataSize(streamId, &address, 0, nil, &dataSize)
+            var name: CFString = "" as NSString
+            CMIOObjectGetPropertyData(streamId, &address, 0, nil, dataSize, &dataUsed, &name);
+            return name as String
+        } else {
+            return nil
+        }
+    }
+
+    func setJustProperty(streamId: CMIOStreamID, newValue: String) {
+        let selector = FourCharCode("just")
+        var address = CMIOObjectPropertyAddress(selector, .global, .main)
+        let exists = CMIOObjectHasProperty(streamId, &address)
+        if exists {
+            var settable: DarwinBoolean = false
+            CMIOObjectIsPropertySettable(streamId,&address,&settable)
+            if settable == false {
+                return
+            }
+            var dataSize: UInt32 = 0
+            CMIOObjectGetPropertyDataSize(streamId, &address, 0, nil, &dataSize)
+            var newName: CFString = newValue as NSString
+            CMIOObjectSetPropertyData(streamId, &address, 0, nil, dataSize, &newName)
+        }
+    }
+
     func makeDevicesVisible(){
         var prop = CMIOObjectPropertyAddress(
             mSelector: CMIOObjectPropertySelector(kCMIOHardwarePropertyAllowScreenCaptureDevices),
@@ -194,15 +229,33 @@ class ViewController: NSViewController {
             }
         }
     }
+    
+    @objc func activate(_ sender: Any? = nil) {
+        activateCamera()
+    }
+
+    @objc func deactivate(_ sender: Any? = nil) {
+        deactivateCamera()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let button = NSButton(title: "activate", target: self, action: #selector(activate(_:)))
+        self.view.addSubview(button)
+
+        let button2 = NSButton(title: "deactivate", target: self, action: #selector(deactivate(_:)))
+        self.view.addSubview(button2)
+        button2.frame = CGRect(x: 120, y: 0, width: button2.frame.width, height: button.frame.height)
 
         self.makeDevicesVisible()
         connectToCamera()
         
-        activateCamera()
+        //activateCamera()
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1/30.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+        propTimer?.invalidate()
+        propTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(propertyTimer), userInfo: nil, repeats: true)
     }
 
     func enqueue(_ queue: CMSimpleQueue, _ image: CGImage) {
@@ -278,12 +331,28 @@ class ViewController: NSViewController {
             print("error getting pixel buffer")
         }
     }
+    
+    @objc func propertyTimer() {
+        if let sourceStream = sourceStream {
+            self.setJustProperty(streamId: sourceStream, newValue: "random")
+            let just = self.getJustProperty(streamId: sourceStream)
+            if let just = just {
+                if just == "sc=1" {
+                    needToStream = true
+                } else {
+                    needToStream = false
+                }
+            }
+        }
+    }
     @objc func fireTimer() {
-        if (enqueued == false || readyToEnqueue == true), let queue = self.sinkQueue {
-            enqueued = true
-            readyToEnqueue = false
-            if let image = image, let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil) {
-                self.enqueue(queue, cgImage)
+        if needToStream {
+            if (enqueued == false || readyToEnqueue == true), let queue = self.sinkQueue {
+                enqueued = true
+                readyToEnqueue = false
+                if let image = image, let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil) {
+                    self.enqueue(queue, cgImage)
+                }
             }
         }
     }
