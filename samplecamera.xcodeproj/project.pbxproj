@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F990A869286F663F00159819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990A868286F663F00159819 /* AppDelegate.swift */; };
+		F990A86B286F663F00159819 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990A86A286F663F00159819 /* ViewController.swift */; };
+		F990A86D286F664500159819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F990A86C286F664500159819 /* Assets.xcassets */; };
+		F990A870286F664500159819 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F990A86E286F664500159819 /* Main.storyboard */; };
+		F990A87E286F666500159819 /* cameraextensionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990A87D286F666500159819 /* cameraextensionProvider.swift */; };
+		F990A880286F666500159819 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990A87F286F666500159819 /* main.swift */; };
+		F990A885286F666500159819 /* com.appblit.samplecamera.cameraextension.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = F990A87B286F666500159819 /* com.appblit.samplecamera.cameraextension.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F990A883286F666500159819 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F990A85D286F663F00159819 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F990A87A286F666500159819;
+			remoteInfo = cameraextension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F990A889286F666500159819 /* Embed System Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(SYSTEM_EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				F990A885286F666500159819 /* com.appblit.samplecamera.cameraextension.systemextension in Embed System Extensions */,
+			);
+			name = "Embed System Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F990A865286F663F00159819 /* samplecamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = samplecamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F990A868286F663F00159819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F990A86A286F663F00159819 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F990A86C286F664500159819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F990A86F286F664500159819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F990A871286F664500159819 /* samplecamera.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = samplecamera.entitlements; sourceTree = "<group>"; };
+		F990A87B286F666500159819 /* com.appblit.samplecamera.cameraextension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = com.appblit.samplecamera.cameraextension.systemextension; sourceTree = BUILT_PRODUCTS_DIR; };
+		F990A87D286F666500159819 /* cameraextensionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraextensionProvider.swift; sourceTree = "<group>"; };
+		F990A87F286F666500159819 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		F990A881286F666500159819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F990A882286F666500159819 /* cameraextension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cameraextension.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F990A862286F663F00159819 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F990A878286F666500159819 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F990A85C286F663F00159819 = {
+			isa = PBXGroup;
+			children = (
+				F990A867286F663F00159819 /* samplecamera */,
+				F990A87C286F666500159819 /* cameraextension */,
+				F990A866286F663F00159819 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F990A866286F663F00159819 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F990A865286F663F00159819 /* samplecamera.app */,
+				F990A87B286F666500159819 /* com.appblit.samplecamera.cameraextension.systemextension */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F990A867286F663F00159819 /* samplecamera */ = {
+			isa = PBXGroup;
+			children = (
+				F990A868286F663F00159819 /* AppDelegate.swift */,
+				F990A86A286F663F00159819 /* ViewController.swift */,
+				F990A86C286F664500159819 /* Assets.xcassets */,
+				F990A86E286F664500159819 /* Main.storyboard */,
+				F990A871286F664500159819 /* samplecamera.entitlements */,
+			);
+			path = samplecamera;
+			sourceTree = "<group>";
+		};
+		F990A87C286F666500159819 /* cameraextension */ = {
+			isa = PBXGroup;
+			children = (
+				F990A87D286F666500159819 /* cameraextensionProvider.swift */,
+				F990A87F286F666500159819 /* main.swift */,
+				F990A881286F666500159819 /* Info.plist */,
+				F990A882286F666500159819 /* cameraextension.entitlements */,
+			);
+			path = cameraextension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F990A864286F663F00159819 /* samplecamera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F990A874286F664500159819 /* Build configuration list for PBXNativeTarget "samplecamera" */;
+			buildPhases = (
+				F990A861286F663F00159819 /* Sources */,
+				F990A862286F663F00159819 /* Frameworks */,
+				F990A863286F663F00159819 /* Resources */,
+				F990A889286F666500159819 /* Embed System Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F990A884286F666500159819 /* PBXTargetDependency */,
+			);
+			name = samplecamera;
+			productName = samplecamera;
+			productReference = F990A865286F663F00159819 /* samplecamera.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F990A87A286F666500159819 /* cameraextension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F990A886286F666500159819 /* Build configuration list for PBXNativeTarget "cameraextension" */;
+			buildPhases = (
+				F990A877286F666500159819 /* Sources */,
+				F990A878286F666500159819 /* Frameworks */,
+				F990A879286F666500159819 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cameraextension;
+			productName = cameraextension;
+			productReference = F990A87B286F666500159819 /* com.appblit.samplecamera.cameraextension.systemextension */;
+			productType = "com.apple.product-type.system-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F990A85D286F663F00159819 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					F990A864286F663F00159819 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					F990A87A286F666500159819 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = F990A860286F663F00159819 /* Build configuration list for PBXProject "samplecamera" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F990A85C286F663F00159819;
+			productRefGroup = F990A866286F663F00159819 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F990A864286F663F00159819 /* samplecamera */,
+				F990A87A286F666500159819 /* cameraextension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F990A863286F663F00159819 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F990A86D286F664500159819 /* Assets.xcassets in Resources */,
+				F990A870286F664500159819 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F990A879286F666500159819 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F990A861286F663F00159819 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F990A86B286F663F00159819 /* ViewController.swift in Sources */,
+				F990A869286F663F00159819 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F990A877286F666500159819 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F990A880286F666500159819 /* main.swift in Sources */,
+				F990A87E286F666500159819 /* cameraextensionProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F990A884286F666500159819 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F990A87A286F666500159819 /* cameraextension */;
+			targetProxy = F990A883286F666500159819 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F990A86E286F664500159819 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F990A86F286F664500159819 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F990A872286F664500159819 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F990A873286F664500159819 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F990A875286F664500159819 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = samplecamera/samplecamera.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 388X9C8CWR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Sample Camera";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appblit.samplecamera;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F990A876286F664500159819 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = samplecamera/samplecamera.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 388X9C8CWR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Sample Camera";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appblit.samplecamera;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F990A887286F666500159819 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = cameraextension/cameraextension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 388X9C8CWR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = cameraextension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = cameraextension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appblit.samplecamera.cameraextension;
+				PRODUCT_NAME = "$(inherited)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F990A888286F666500159819 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = cameraextension/cameraextension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 388X9C8CWR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = cameraextension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = cameraextension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appblit.samplecamera.cameraextension;
+				PRODUCT_NAME = "$(inherited)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F990A860286F663F00159819 /* Build configuration list for PBXProject "samplecamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F990A872286F664500159819 /* Debug */,
+				F990A873286F664500159819 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F990A874286F664500159819 /* Build configuration list for PBXNativeTarget "samplecamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F990A875286F664500159819 /* Debug */,
+				F990A876286F664500159819 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F990A886286F666500159819 /* Build configuration list for PBXNativeTarget "cameraextension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F990A887286F666500159819 /* Debug */,
+				F990A888286F666500159819 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F990A85D286F663F00159819 /* Project object */;
+}
