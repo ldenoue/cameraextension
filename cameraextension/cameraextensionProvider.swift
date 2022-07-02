@@ -11,10 +11,6 @@ import IOKit.audio
 import os.log
 import Cocoa
 
-let kFrameRate: Int = 30
-let cameraName = "Sample Camera"
-let fixedCamWidth: Int32 = 1280
-let fixedCamHeight: Int32 = 720
 let textColor = NSColor.white
 let fontSize = 24.0
 let textFont = NSFont.systemFont(ofSize: fontSize)

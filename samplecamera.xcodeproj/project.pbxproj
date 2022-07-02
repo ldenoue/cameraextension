@@ -14,6 +14,8 @@
 		F990A87E286F666500159819 /* cameraextensionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990A87D286F666500159819 /* cameraextensionProvider.swift */; };
 		F990A880286F666500159819 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990A87F286F666500159819 /* main.swift */; };
 		F990A885286F666500159819 /* com.appblit.samplecamera.cameraextension.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = F990A87B286F666500159819 /* com.appblit.samplecamera.cameraextension.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F990A88B287047FE00159819 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990A88A287047FE00159819 /* Config.swift */; };
+		F990A88C287047FE00159819 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990A88A287047FE00159819 /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,7 @@
 		F990A87F286F666500159819 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F990A881286F666500159819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F990A882286F666500159819 /* cameraextension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cameraextension.entitlements; sourceTree = "<group>"; };
+		F990A88A287047FE00159819 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				F990A87D286F666500159819 /* cameraextensionProvider.swift */,
+				F990A88A287047FE00159819 /* Config.swift */,
 				F990A87F286F666500159819 /* main.swift */,
 				F990A881286F666500159819 /* Info.plist */,
 				F990A882286F666500159819 /* cameraextension.entitlements */,
@@ -215,6 +219,7 @@
 			files = (
 				F990A86B286F663F00159819 /* ViewController.swift in Sources */,
 				F990A869286F663F00159819 /* AppDelegate.swift in Sources */,
+				F990A88B287047FE00159819 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +229,7 @@
 			files = (
 				F990A880286F666500159819 /* main.swift in Sources */,
 				F990A87E286F666500159819 /* cameraextensionProvider.swift in Sources */,
+				F990A88C287047FE00159819 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

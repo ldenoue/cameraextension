@@ -10,12 +10,9 @@ import Cocoa
 import CoreMediaIO
 import SystemExtensions
 
-let cameraName = "Sample Camera"
-let fixedCamWidth: Int32 = 1280
-let fixedCamHeight: Int32 = 720
-
 class ViewController: NSViewController {
 
+    private var debug: NSTextField!
     private var needToStream: Bool = false
     private var mirrorCamera: Bool = false
     private var image = NSImage(named: "cham-index")
@@ -147,16 +144,16 @@ class ViewController: NSViewController {
             sender.readyToEnqueue = true
         },pointerRef,pointerQueue)
         if result != 0 {
-            print("error starting sink")
+            showMessage("error starting sink")
         } else {
             if let queue = pointerQueue.pointee {
                 self.sinkQueue = queue.takeUnretainedValue()
             }
             let resultStart = CMIODeviceStartStream(deviceId, sinkStream)
             if resultStart == 0 {
-                print("initSink resultStart=",resultStart)
+                showMessage("initSink resultStart=\(resultStart)")
             } else {
-                print("initSink error startstream")
+                showMessage("initSink error startstream")
             }
         }
     }
@@ -173,11 +170,7 @@ class ViewController: NSViewController {
             // Fallback on earlier versions
             devices = AVCaptureDevice.devices(for: .video)
         }
-        //let devices = AVCaptureDevice.devices(for: .video)
         guard let devices = devices else { return nil }
-        /*for device in devices {
-            print("getDevice=",device.localizedName,device.uniqueID)
-        }*/
         return devices.first { $0.localizedName == name}
     }
 
@@ -215,16 +208,15 @@ class ViewController: NSViewController {
         return streamIds
     }
     func connectToCamera() {
-        print("connectToCamera")
         if let device = getDevice(name: cameraName), let deviceObjectId = getCMIODevice(uid: device.uniqueID) {
             let streamIds = getInputStreams(deviceId: deviceObjectId)
-            //print(device,deviceObjectId,streamIds)
             if streamIds.count == 2 {
                 sinkStream = streamIds[1]
-                print("found sink stream",sinkStream!)
+                showMessage("found sink stream")
                 initSink(deviceId: deviceObjectId, sinkStream: streamIds[1])
             }
             if let firstStream = streamIds.first {
+                showMessage("found source stream")
                 sourceStream = firstStream
             }
         }
@@ -238,15 +230,32 @@ class ViewController: NSViewController {
         deactivateCamera()
     }
 
+    func registerForDeviceNotifications() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVCaptureDeviceWasConnected, object: nil, queue: nil) { (notif) -> Void in
+            // when the user click "activate", we will receive a notification
+            // we can then try to connect to our "Sample Camera" (if not already connected to)
+            if self.sourceStream == nil {
+                self.connectToCamera()
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        registerForDeviceNotifications()
         let button = NSButton(title: "activate", target: self, action: #selector(activate(_:)))
         self.view.addSubview(button)
 
         let button2 = NSButton(title: "deactivate", target: self, action: #selector(deactivate(_:)))
         self.view.addSubview(button2)
         button2.frame = CGRect(x: 120, y: 0, width: button2.frame.width, height: button.frame.height)
+
+        debug = NSTextField(string: "activate")
+        debug.isEditable = false
+        let frame = self.view.frame
+        debug.frame = frame.insetBy(dx: 0, dy: 32)
+        self.view.addSubview(debug)
 
         self.makeDevicesVisible()
         connectToCamera()
@@ -258,6 +267,11 @@ class ViewController: NSViewController {
         propTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(propertyTimer), userInfo: nil, repeats: true)
     }
 
+    func showMessage(_ text: String) {
+        print("showMessage",text)
+        debug.stringValue += "\n\(text)"
+    }
+    
     func enqueue(_ queue: CMSimpleQueue, _ image: CGImage) {
         guard CMSimpleQueueGetCount(queue) < CMSimpleQueueGetCapacity(queue) else {
             print("error enqueuing")
@@ -370,37 +384,36 @@ extension ViewController:OSSystemExtensionRequestDelegate
 {
     func request(_ request: OSSystemExtensionRequest, actionForReplacingExtension existing: OSSystemExtensionProperties,
                  withExtension ext: OSSystemExtensionProperties) -> OSSystemExtensionRequest.ReplacementAction {
-        print("Replacing extension version \(existing.bundleShortVersion) with \(ext.bundleShortVersion)")
+        showMessage("Replacing extension version \(existing.bundleShortVersion) with \(ext.bundleShortVersion)")
         return .replace
     }
     
     func requestNeedsUserApproval(_ request: OSSystemExtensionRequest) {
-        print("Extension needs user approval")
+        showMessage("Extension needs user approval")
     }
 
     func request(_ request: OSSystemExtensionRequest, didFinishWithResult result: OSSystemExtensionRequest.Result) {
-        print("Request finished with result: \(result.rawValue)")
+        showMessage("Request finished with result: \(result.rawValue)")
         if result == .completed {
             if self.activating {
-                print("The camera is activated")
+                showMessage("The camera is activated")
             } else {
-                print("The camera is deactivated")
+                showMessage("The camera is deactivated")
             }
         } else {
             if self.activating {
-                print("Please reboot to finish activating the Scregle camera")
+                showMessage("Please reboot to finish activating the Scregle camera")
             } else {
-                print("Please Reboot to finish deactivating the Scregle camera")
+                showMessage("Please Reboot to finish deactivating the Scregle camera")
             }
         }
     }
 
     func request(_ request: OSSystemExtensionRequest, didFailWithError error: Error) {
-        print("request failed: \(error)")
         if self.activating {
-            print("Failed to activate the camera")
+            showMessage("Failed to activate the camera")
         } else {
-            print("Failed to deactivate the camera")
+            showMessage("Failed to deactivate the camera")
         }
     }
 }

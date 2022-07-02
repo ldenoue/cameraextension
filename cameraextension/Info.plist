@@ -5,7 +5,7 @@
 	<key>CMIOExtension</key>
 	<dict>
 		<key>CMIOExtensionMachServiceName</key>
-		<string>$(TeamIdentifierPrefix)$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+		<string>388X9C8CWR.com.appblit.samplecamera</string>
 	</dict>
 	<key>NSSystemExtensionUsageDescription</key>
 	<string></string>

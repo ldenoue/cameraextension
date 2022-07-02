@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>$(TeamIdentifierPrefix)com.example.app-group</string>
+		<string>388X9C8CWR.com.appblit.samplecamera</string>
 	</array>
 </dict>
 </plist>
