@@ -10,6 +10,8 @@ when the sink stream is not started, the camera simply shows a black frame with 
 
 when the app runs, it asks the camera (using CoreMediaIO C API in Swift) if its source stream has started (meaning that at least one client such as QuickTime wants to see frames). If so, it starts sending frames to the sink (on our case a static image of Chamonix).
 
+**IMPORTANT** you'll need to replace the AppBlit team with your own and replace `388X9C8CWR.com.appblit.samplecamera` in the 3 places (entitlement files and the Info.plist of the extension).
+
 after you compiled the code, find where it is using Xcode menu `Product` and `Show Build Folder in Finder` then open the `Build > Products > Debug` and drag `samplecamera` into `Applications`
 
 From `/Applications` open `samplecamera`
