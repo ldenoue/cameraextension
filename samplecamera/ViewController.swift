@@ -12,7 +12,8 @@ import SystemExtensions
 
 class ViewController: NSViewController {
 
-    private var debug: NSTextField!
+    private var debugCaption: NSTextField!
+    private var needToStreamCaption: NSTextField!
     private var needToStream: Bool = false
     private var mirrorCamera: Bool = false
     private var image = NSImage(named: "cham-index")
@@ -149,9 +150,9 @@ class ViewController: NSViewController {
             if let queue = pointerQueue.pointee {
                 self.sinkQueue = queue.takeUnretainedValue()
             }
-            let resultStart = CMIODeviceStartStream(deviceId, sinkStream)
-            if resultStart == 0 {
-                showMessage("initSink resultStart=\(resultStart)")
+            let resultStart = CMIODeviceStartStream(deviceId, sinkStream) == 0
+            if resultStart {
+                showMessage("initSink started")
             } else {
                 showMessage("initSink error startstream")
             }
@@ -251,16 +252,19 @@ class ViewController: NSViewController {
         self.view.addSubview(button2)
         button2.frame = CGRect(x: 120, y: 0, width: button2.frame.width, height: button.frame.height)
 
-        debug = NSTextField(string: "activate")
-        debug.isEditable = false
+        debugCaption = fakeLabel("")
+        debugCaption.isEditable = false
         let frame = self.view.frame
-        debug.frame = frame.insetBy(dx: 0, dy: 32)
-        self.view.addSubview(debug)
+        debugCaption.frame = frame.insetBy(dx: 0, dy: 32)
+        self.view.addSubview(debugCaption)
+
+        needToStreamCaption = fakeLabel("need to stream = ???")
+        needToStreamCaption.frame = needToStreamCaption.frame.offsetBy(dx: button2.frame.maxX + 16, dy: 4)
+        self.view.addSubview(needToStreamCaption)
 
         self.makeDevicesVisible()
         connectToCamera()
         
-        //activateCamera()
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1/30.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         propTimer?.invalidate()
@@ -269,9 +273,19 @@ class ViewController: NSViewController {
 
     func showMessage(_ text: String) {
         print("showMessage",text)
-        debug.stringValue += "\n\(text)"
+        debugCaption.stringValue += "\(text)\n"
     }
     
+    func fakeLabel(_ text: String) -> NSTextField {
+        let label = NSTextField()
+        label.frame = CGRect(origin: .zero, size: CGSize(width: 200, height: 24))
+        label.stringValue = text
+        label.backgroundColor = .clear
+        //label.isBezeled = false
+        label.isEditable = false
+        //label.sizeToFit()
+        return label
+    }
     func enqueue(_ queue: CMSimpleQueue, _ image: CGImage) {
         guard CMSimpleQueueGetCount(queue) < CMSimpleQueueGetCapacity(queue) else {
             print("error enqueuing")
@@ -357,6 +371,7 @@ class ViewController: NSViewController {
                     needToStream = false
                 }
             }
+            needToStreamCaption.stringValue = "need to stream = \(needToStream)"
         }
     }
     @objc func fireTimer() {
@@ -411,7 +426,7 @@ extension ViewController:OSSystemExtensionRequestDelegate
 
     func request(_ request: OSSystemExtensionRequest, didFailWithError error: Error) {
         if self.activating {
-            showMessage("Failed to activate the camera")
+            showMessage("Failed to activate the camera, run samplecamera from inside /Applications :)")
         } else {
             showMessage("Failed to deactivate the camera")
         }
