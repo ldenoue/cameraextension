@@ -32,10 +32,6 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
     
     private let _timerQueue = DispatchQueue(label: "timerQueue", qos: .userInteractive, attributes: [], autoreleaseFrequency: .workItem, target: .global(qos: .userInteractive))
 
-    //private var _timerSink: DispatchSourceTimer?
-    
-    private let _timerQueueSink = DispatchQueue(label: "timerQueueSink", qos: .userInteractive, attributes: [], autoreleaseFrequency: .workItem, target: .global(qos: .userInteractive))
-
     private var _videoDescription: CMFormatDescription!
     
     private var _bufferPool: CVPixelBufferPool!
@@ -131,7 +127,7 @@ class cameraDeviceSource: NSObject, CMIOExtensionDeviceSource {
         
         _streamingCounter += 1
         _timer = DispatchSource.makeTimerSource(flags: .strict, queue: _timerQueue)
-        _timer!.schedule(deadline: .now(), repeating: Double(1/kFrameRate), leeway: .seconds(0))
+        _timer!.schedule(deadline: .now(), repeating: 1.0/Double(kFrameRate), leeway: .seconds(0))
         
         _timer!.setEventHandler {
 
